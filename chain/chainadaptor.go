@@ -22,4 +22,5 @@ type IChainAdaptor interface {
 	VerifySignedTransaction(req *account.VerifyTransactionRequest) (*account.VerifyTransactionResponse, error)
 	GetExtraData(req *account.ExtraDataRequest) (*account.ExtraDataResponse, error)
 	GetNftListByAddress(req *account.NftAddressRequest) (*account.NftAddressResponse, error)
+	CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error)
 }

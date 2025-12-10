@@ -612,6 +612,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	return evmbase.CallContract(c.ethClient, req)
+}
+
 func getSafeUint64Ptr(ptr *uint64) uint64 {
 	if ptr == nil {
 		return 0

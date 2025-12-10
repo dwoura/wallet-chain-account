@@ -245,3 +245,7 @@ func (c *ChainAdaptor) GetExtraData(req *account.ExtraDataRequest) (*account.Ext
 func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*account.NftAddressResponse, error) {
 	panic("implement me")
 }
+
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	panic("implement me")
+}

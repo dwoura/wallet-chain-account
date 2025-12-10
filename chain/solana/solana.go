@@ -996,6 +996,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	panic("implement me")
+}
+
 func isSOLTransfer(coinAddress string) bool {
 	return coinAddress == "" ||
 		coinAddress == "So11111111111111111111111111111111111111112"

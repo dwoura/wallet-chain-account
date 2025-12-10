@@ -46,6 +46,11 @@ type ChainDispatcher struct {
 	registry map[ChainType]chain.IChainAdaptor
 }
 
+// mustEmbedUnimplementedWalletAccountServiceServer implements account.WalletAccountServiceServer.
+func (d *ChainDispatcher) mustEmbedUnimplementedWalletAccountServiceServer() {
+	panic("unimplemented")
+}
+
 func New(conf *config.Config) (*ChainDispatcher, error) {
 	dispatcher := ChainDispatcher{
 		registry: make(map[ChainType]chain.IChainAdaptor),
@@ -370,4 +375,15 @@ func (d *ChainDispatcher) GetNftTradeHistory(ctx context.Context, request *accou
 
 func (d *ChainDispatcher) GetAddressNftTradeHistory(ctx context.Context, request *account.AddressNftTradeHistoryRequest) (*account.AddressNftTradeHistoryResponse, error) {
 	panic("implement me")
+}
+
+func (d *ChainDispatcher) CallContract(ctx context.Context, request *account.CallContractRequest) (*account.CallContractResponse, error) {
+	resp, chainName := d.preHandler(request)
+	if resp != nil {
+		return &account.CallContractResponse{
+			Code: common.ReturnCode_ERROR,
+			Msg:  "call contract fail at pre handle",
+		}, nil
+	}
+	return d.registry[chainName].CallContract(request)
 }

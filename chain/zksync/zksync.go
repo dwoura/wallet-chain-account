@@ -787,6 +787,10 @@ func (c ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acco
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	return evmbase.CallContract(c.ethClient, req)
+}
+
 // buildDynamicFeeTx build eip1559 tx
 func (c ChainAdaptor) buildDynamicFeeTx(base64Tx string) (*types.DynamicFeeTx, *evmbase.Eip1559DynamicFeeTx, error) {
 	// Decode base64 string

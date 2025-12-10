@@ -595,6 +595,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	panic("implement me")
+}
+
 //
 //// 检查交易确认状态
 //func (c *ChainAdaptor) CheckTxConfirmations(txHash string) (bool, int64, error) {

@@ -924,6 +924,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	panic("implement me")
+}
+
 func CalculateGasFee(gasUnitPrice, totalChargeGasUnits, storageFeeOctas, storageRefundOctas uint64) uint64 {
 	// calc base gas fee
 	gasFee := gasUnitPrice * totalChargeGasUnits

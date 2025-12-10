@@ -494,6 +494,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	panic("implement me")
+}
+
 func (c *ChainAdaptor) parseTx(txs types.Txs) (uint64, []*account.BlockInfoTransactionList) {
 	totalGas := uint64(0)
 	var recipient, sender, amount = "", "", ""

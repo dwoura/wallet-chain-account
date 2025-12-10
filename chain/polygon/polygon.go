@@ -636,6 +636,10 @@ func (c *ChainAdaptor) GetNftListByAddress(req *account.NftAddressRequest) (*acc
 	panic("implement me")
 }
 
+func (c *ChainAdaptor) CallContract(req *account.CallContractRequest) (*account.CallContractResponse, error) {
+	return evmbase.CallContract(c.ethClient, req)
+}
+
 // buildDynamicFeeTx 构建动态费用交易的公共方法
 func (c *ChainAdaptor) buildDynamicFeeTx(base64Tx string) (*types.DynamicFeeTx, *evmbase.Eip1559DynamicFeeTx, error) {
 	// 1. Decode base64 string
