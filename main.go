@@ -11,6 +11,7 @@ import (
 
 	"github.com/dapplink-labs/wallet-chain-account/chaindispatcher"
 	"github.com/dapplink-labs/wallet-chain-account/config"
+
 	wallet2 "github.com/dapplink-labs/wallet-chain-account/rpc/account"
 )
 

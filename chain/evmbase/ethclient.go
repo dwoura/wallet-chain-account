@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	defaultDialTimeout    = 5 * time.Second
+	defaultDialTimeout    = 20 * time.Second
 	defaultDialAttempts   = 5
 	defaultRequestTimeout = 10 * time.Second
 )

@@ -43,6 +43,7 @@ type CommonReply = account.SupportChainsResponse
 type ChainType = string
 
 type ChainDispatcher struct {
+	account.UnimplementedWalletAccountServiceServer
 	registry map[ChainType]chain.IChainAdaptor
 }
 
