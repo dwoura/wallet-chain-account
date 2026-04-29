@@ -4,13 +4,14 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gagliardetto/solana-go/rpc"
 	"log"
 	"sort"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/gagliardetto/solana-go"
+	"github.com/gagliardetto/solana-go/rpc"
 
 	gresty "github.com/go-resty/resty/v2"
 )
@@ -568,10 +569,11 @@ func (s *solclient) GetBlockBySlot(slot uint64, detailType TransactionDetailsTyp
 func (s *solclient) GetTransaction(signature string) (*TransactionResult, error) {
 	signature = strings.TrimSpace(signature)
 	if signature == "" {
+
 		return nil, fmt.Errorf("invalid input: empty signature")
 	}
-	if len(signature) < 88 || len(signature) > 90 {
-		return nil, fmt.Errorf("invalid signature length: expected 88-90 chars, got %d", len(signature))
+	if len(signature) < 80 || len(signature) > 90 {
+		return nil, fmt.Errorf("invalid signature length: expected 80-90 chars, got %d", len(signature))
 	}
 	config := map[string]interface{}{
 		"encoding":                       "json",
@@ -631,8 +633,8 @@ func (s *solclient) GetTransactionRange(inputSignatureList []string) ([]*Transac
 		if inputSignatureList[i] == "" {
 			return nil, fmt.Errorf("invalid input: empty signature at index %d", i)
 		}
-		if len(inputSignatureList[i]) < 88 || len(inputSignatureList[i]) > 90 {
-			return nil, fmt.Errorf("invalid signature length at index %d: expected 88-90 chars, got %d",
+		if len(inputSignatureList[i]) < 80 || len(inputSignatureList[i]) > 90 {
+			return nil, fmt.Errorf("invalid signature length at index %d: expected 80-90 chars, got %d",
 				i, len(inputSignatureList[i]))
 		}
 	}

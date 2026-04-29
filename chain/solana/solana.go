@@ -393,6 +393,7 @@ func (c *ChainAdaptor) GetTxByAddress(req *account.TxAddressRequest) (*account.T
 	var resp *account2.TransactionResponse[account2.AccountTxResponse]
 	var err error
 	fmt.Println("req.ContractAddress", req.ContractAddress)
+
 	if req.ContractAddress != "0x00" && req.ContractAddress != "" {
 		log.Info("Spl token transfer record")
 		resp, err = c.solData.GetTxByAddress(uint64(req.Page), uint64(req.Pagesize), req.Address, "spl")
@@ -415,7 +416,7 @@ func (c *ChainAdaptor) GetTxByAddress(req *account.TxAddressRequest) (*account.T
 				Hash:   txs[i].TxId,
 				To:     txs[i].To,
 				From:   txs[i].From,
-				Fee:    txs[i].TxId,
+				Fee:    txs[i].TxFee,
 				Status: account.TxStatus_Success,
 				Value:  txs[i].Amount,
 				Type:   1,
@@ -1016,7 +1017,7 @@ func getPrivateKey(keyStr string) (solana.PrivateKey, error) {
 }
 
 func validateChainAndNetwork(chain, network string) (bool, string) {
-	if chain != ChainName {
+	if !strings.EqualFold(chain, ChainName) {
 		return false, "invalid chain"
 	}
 	return true, ""
